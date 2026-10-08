@@ -1,0 +1,28 @@
+@model IEnumerable<WebAppProductsandCategories.Models.Category>
+
+<h1>Categorías</h1>
+
+<a href="@Url.Action("Create")" class="btn btn-primary">Crear Nueva Categoría</a>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>ID Categoría</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.CategoryId</td>
+                <td>@category.Name</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = category.CategoryId })" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="@Url.Action("Delete", new { id = category.CategoryId })" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

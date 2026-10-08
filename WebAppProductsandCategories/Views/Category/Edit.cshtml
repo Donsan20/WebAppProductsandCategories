@@ -1,0 +1,19 @@
+@model WebAppProductsandCategories.Models.Category
+
+<h1>Editar Categoría</h1>
+
+<form asp-action="Edit">
+    <!-- Campo oculto para conservar el Id sin que el usuario lo modifique -->
+    <input type="hidden" asp-for="CategoryId" />
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
