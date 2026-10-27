@@ -1,4 +1,4 @@
-﻿-- ============================================================================
+-- ============================================================================
 -- SCRIPT DE INICIALIZACIÓN DE BASE DE DATOS PARA SQL SERVER
 -- Proyecto: WebAppProductsandCategories (Catálogo de Productos y Categorías)
 -- ============================================================================
@@ -38,7 +38,7 @@ BEGIN
         Price DECIMAL(18,2) NOT NULL,
         CategoryId INT NOT NULL,
         CONSTRAINT FK_Products_Categories FOREIGN KEY (CategoryId) 
-            REFERENCES Categories(CategoryId)
+            REFERENCES Categories(CategoryId) ON DELETE CASCADE
     );
     PRINT 'Tabla Products creada exitosamente.';
 END

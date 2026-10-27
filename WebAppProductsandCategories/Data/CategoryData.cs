@@ -63,7 +63,13 @@ namespace WebAppProductsandCategories.Data
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = new SqlCommand("DELETE FROM Categories WHERE CategoryId = @CategoryId", connection);
+                var query = @"
+                    BEGIN TRANSACTION;
+                    DELETE FROM Products WHERE CategoryId = @CategoryId;
+                    DELETE FROM Categories WHERE CategoryId = @CategoryId;
+                    COMMIT TRANSACTION;";
+
+                var command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@CategoryId", categoryId);
 
                 connection.Open();
